@@ -4,6 +4,7 @@
   "description": "A tip calculator used to demonstrate TDD!",
   "main": "index.js",
   "scripts": {
+    "start": "node app.js",
     "test": "mocha"
   },
   "repository": {
