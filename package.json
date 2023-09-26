@@ -1,0 +1,22 @@
+{
+  "name": "tip-calculator",
+  "version": "1.0.0",
+  "description": "A tip calculator used to demonstrate TDD!",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reece-stephenson/tip-calculator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/reece-stephenson/tip-calculator/issues"
+  },
+  "homepage": "https://github.com/reece-stephenson/tip-calculator#readme",
+  "dependencies": {
+    "chai": "^4.3.8"
+  }
+}
