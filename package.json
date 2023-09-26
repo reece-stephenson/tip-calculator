@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/reece-stephenson/tip-calculator#readme",
   "dependencies": {
-    "chai": "^4.3.8"
+    "chai": "^4.3.8",
+    "mocha": "^10.2.0"
   }
 }
