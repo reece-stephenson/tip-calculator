@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node app.js",
     "test": "nyc mocha",
-    "coverage": "nyc --reporter=lcov mocha && codecov"
+    "coverage": "nyc --reporter=lcov mocha"
   },
   "repository": {
     "type": "git",
