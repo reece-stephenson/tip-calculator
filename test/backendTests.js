@@ -37,7 +37,7 @@ describe('Tip Calculation', () => {
     
         testCases.forEach((testCase) => {
             const { totalBill, tipPercentage, expectedTipAmount } = testCase;
-            const tipAmount = calculateTip(totalBill, tipPercentage);
+            const tipAmount = app.calculateTip(totalBill, tipPercentage);
             expect(tipAmount).to.equal(expectedTipAmount);
         });
         });
@@ -50,22 +50,22 @@ describe('Tip Calculation', () => {
         ];
     
         invalidInputs.forEach((input) => {
-            expect(() => calculateTip(input.totalBill, input.tipPercentage)).to.throw(Error);
+            expect(() => app.calculateTip(input.totalBill, input.tipPercentage)).to.throw(Error);
         });
         });
     
         it('should handle edge cases', () => {
         // Test with the minimum bill and tip percentage values
-        expect(() => calculateTip(0.01, 0)).to.not.throw(Error);
+        expect(() => app.calculateTip(0.01, 0)).to.not.throw(Error);
         
         // Test with the maximum bill and tip percentage values
-        expect(() => calculateTip(Number.MAX_SAFE_INTEGER, 100)).to.not.throw(Error);
+        expect(() => app.calculateTip(Number.MAX_SAFE_INTEGER, 100)).to.not.throw(Error);
     
         // Test with a very high bill and a very low tip percentage
         const totalBill = 1e20; // 1 followed by 20 zeros
         const tipPercentage = 0.00000001; // 0.00000001%
         const expectedTipAmount = '0.01';
-        const tipAmount = calculateTip(totalBill, tipPercentage);
+        const tipAmount = app.calculateTip(totalBill, tipPercentage);
         expect(tipAmount).to.equal(expectedTipAmount);
         });
   });
