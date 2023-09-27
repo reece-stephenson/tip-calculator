@@ -1,3 +1,4 @@
+[![codecov](https://codecov.io/gh/reece-stephenson/tip-calculator/graph/badge.svg?token=I5U7KFCIJH)](https://codecov.io/gh/reece-stephenson/tip-calculator)
 # Tip Calculator
 A simple tip calculator that will let us demonstrate Test Driven Development
 
