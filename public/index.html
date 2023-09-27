@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tip Calculator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="calculator">
+      <h1>Tip Calculator</h1>
+      <section class="items">
+        <section class="item input">
+          <label for="amount">Bill Amount (R):</label>
+          <input type="number" id="amount" step="0.01" min="0" required />
+        </section>
+        <section class="item input">
+          <label for="percentage">Tip Percentage (%):</label>
+          <input type="number" id="percentage" step="1" min="0" required />
+        </section>
+        <p id="errorMessage"></p>
+        <section class="item output">
+          <label for="tip">Tip</label>
+          <span id="tip"></span>
+        </section>
+        <section class="item output">
+          <label for="total">Total</label>
+          <span id="total"></span>
+        </section>
+      </section>
+      <section class="items">
+        <section class="item input">
+          <label for="people">Number of People:</label>
+          <input
+            type="number"
+            id="people"
+            step="1"
+            min="1"
+            value="1"
+            required
+          />
+        </section>
+        <section class="item output">
+          <label for="split">Split Amount</label>
+          <span id="split"></span>
+        </section>
+      </section>
+    </main> 
+    <script src="script.js" defer></script>
+    <script src="calculations.js" defer></script>
+    <script src="inputValidation.js" defer></script>
+  </body>
+</html>
