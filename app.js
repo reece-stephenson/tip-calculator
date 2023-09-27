@@ -1,15 +1,15 @@
 // A tip calculation app
-
 var express = require('express');
 var app = express();
 var path = require('path');
 
+const PORT = process.env.PORT || 8000;
+
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.listen(3000, function () {
-  console.log('App listening on port 3000!');
+app.listen(PORT, function () {
+  console.log(`App listening on port ${PORT}!`);
 });
-
 
 //Temporarilty Putting BE Functions Here
 function calculateTotal(billAmount, tipAmount){
