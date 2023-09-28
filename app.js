@@ -17,6 +17,20 @@ function calculateTotal(billAmount, tipAmount){
     return billAmount + tipAmount;
 }
 
+//Calculate Tip and Validate input
+function calculateTip(totalBill, tipPercentage) {
+
+    if (totalBill <= 0 || tipPercentage < 0 || tipPercentage > 100) {
+      throw new Error('Invalid input. Bill must be greater than 0, and tip percentage must be between 0 and 100.');
+    }
+  
+    const tipAmount = (totalBill * tipPercentage) / 100;
+    return tipAmount.toFixed(2);
+  }
+  
+  module.exports = calculateTip;
+  
+
 module.exports = {
     validateBillInput,
     validateTipInput,
