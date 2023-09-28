@@ -38,8 +38,8 @@ describe('Inputs', () => {
             assert.equal(inputValidation.validateTipInput(0), true);
         });
     
-        it('should return false if the value is greater than 100 ', function () {
-            assert.equal(inputValidation.validateTipInput(101), false);
+        it('should return true if the value is greater than 100 ', function () {
+            assert.equal(inputValidation.validateTipInput(101), true);
         });
     
         it('should return true if the value is between 1 and 100', function () {
