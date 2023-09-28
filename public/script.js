@@ -22,7 +22,6 @@ function updateOutputs() {
     errorMessage.innerText = "Please insert a valid tip percentage.";
     resetOutput();
   } else if (!validatePeopleInput(people)) {
-    console.log("PEOPLE INPUT: ", people);
     errorMessage.innerText = "Please insert a valid number of people.";
     resetOutput();
   } else {
