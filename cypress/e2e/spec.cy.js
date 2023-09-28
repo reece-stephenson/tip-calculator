@@ -10,8 +10,8 @@ describe('login test', ()=>{
     cy.get('form').within(() => {
 
       // Only yield inputs within form
-      cy.get('input[name="username"]').type('Pamela');
-      cy.get('input[name="password"]').type('Secret');
+      cy.get('input[name="username"]').type('Pamela').should('have.value', 'Pamela');
+      cy.get('input[name="password"]').type('Secret').should('have.value', 'Secret');;
       cy.get('button').click();
     })
 
