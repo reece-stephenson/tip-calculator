@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tip Calculator</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="icon.ico" type="image/x-icon">
   </head>
   <body>
     <main class="calculator">
@@ -12,11 +13,11 @@
       <section class="items">
         <section class="item input">
           <label for="amount">Bill Amount (R):</label>
-          <input type="number" id="amount" step="0.01" min="0" required />
+          <input type="number" id="amount" step="10" min="0" required />
         </section>
         <section class="item input">
           <label for="percentage">Tip Percentage (%):</label>
-          <input type="number" id="percentage" step="1" min="0" required />
+          <input type="number" id="percentage" step="10" min="0" required />
         </section>
         <p id="errorMessage"></p>
         <section class="item output">
