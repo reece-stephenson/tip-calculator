@@ -1,18 +1,25 @@
-console.log("Hello, World!");
+// A tip calculation app
+// Empty functions for test driven development
+function validateBillInput(billAmount) {
+    return null;
+}
 
-// Here's an example of a function that needs testing
-var Chef = function(){
-    this.dishes = ['Dosa', 'Tea', 'Pokoras', 'Pav Bhaji'];
+function validateTipInput(tipPercentage) {
+    return null;
+}
+
+function validatePeopleInput(numberOfPeople) {
+    return null;
+}
+
+//Temporarilty Putting BE Functions Here
+function calculateTotal(billAmount, tipAmount){
+    return billAmount + tipAmount;
+}
+
+module.exports = {
+    validateBillInput,
+    validateTipInput,
+    validatePeopleInput,
+    calculateTotal
 };
-Chef.prototype.checkMenu= function(){
-    //returns a string
-    //returns a random dish from the dishes array
-    let dish = this.dishes[Math.floor(Math.random() * this.dishes.length)];
-
-    console.log("I will like to have:", dish);
-    return dish;
-};
-
-let chef = new Chef();
-
-module.exports = chef;
