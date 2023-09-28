@@ -16,6 +16,8 @@ describe('Total Amount Calculation Test', function(){
 
     it('should return an error when given invalid input', function(){
         expect(() => calculateTotal(0, -1)).to.throw(Error);
+        expect(() => calculateTotal(-11, -121)).to.throw(Error);
+        expect(() => calculateTotal(0, 0)).to.throw(Error);
     });
 
 });
