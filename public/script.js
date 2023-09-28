@@ -15,22 +15,39 @@ function updateOutputs() {
   const percentage = parseFloat(percentageInput.value);
   const people = parseInt(peopleInput.value);
 
-  if (!isNaN(amount) && !isNaN(percentage) && !isNaN(people) && people > 0) {
-    try{
-        const tip = calculateTip(amount, percentage);
-        const total = calculateTotal(amount, tip);
-        const split = total / people;
-        
-        tipOutput.textContent = `R${tip}`;
-        totalOutput.textContent = `R${total}`;
-        splitOutput.textContent = `R${split.toFixed(2)}`;
-    }catch(e){
-        errorMessage.innerText = e;
-    }
-
+  if (!validateBillInput(amount)) {
+    errorMessage.innerText = "Please insert a valid bill amount.";
+    resetOutput();
+  } else if (!validateTipInput(percentage)) {
+    errorMessage.innerText = "Please insert a valid tip percentage.";
+    resetOutput();
+  } else if (!validatePeopleInput(people)) {
+    console.log("PEOPLE INPUT: ", people);
+    errorMessage.innerText = "Please insert a valid number of people.";
+    resetOutput();
   } else {
-    tipOutput.textContent = "";
-    totalOutput.textContent = "";
-    splitOutput.textContent = "";
+    try {
+      const tip = calculateTip(amount, percentage);
+      const total = calculateTotal(amount, tip);
+      const split = total / people;
+
+      tipOutput.textContent = `R${tip}`;
+      totalOutput.textContent = `R${total}`;
+      splitOutput.textContent = `R${split.toFixed(2)}`;
+      resetErrorMessage();
+    } catch (e) {
+      errorMessage.innerText = e;
+      resetOutput();
+    }
   }
+}
+
+function resetOutput() {
+  tipOutput.textContent = "";
+  totalOutput.textContent = "";
+  splitOutput.textContent = "";
+}
+
+function resetErrorMessage() {
+  errorMessage.textContent = "";
 }
