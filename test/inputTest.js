@@ -1,5 +1,5 @@
 const assert = require('chai').assert;
-const inputValidation = require('../inputValidation');
+const inputValidation = require('../public/inputValidation');
 
 // Tests that check the input validation of our bill input field
 describe('Inputs', () => {

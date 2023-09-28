@@ -1,6 +1,6 @@
 const assert = require('chai').assert;
 const expect = require('chai').expect;
-const app = require('../app');
+const app = require('../public/calculations');
 
 /**
  * Unit Tests for Backend Functions
@@ -64,7 +64,7 @@ describe('Tip Calculation', () => {
         // Test with a very high bill and a very low tip percentage
         const totalBill = 1e20; // 1 followed by 20 zeros
         const tipPercentage = 0.00000001; // 0.00000001%
-        const expectedTipAmount = '0.01';
+        const expectedTipAmount = '10000000000.00';
         const tipAmount = app.calculateTip(totalBill, tipPercentage);
         expect(tipAmount).to.equal(expectedTipAmount);
         });
