@@ -9,3 +9,5 @@ A simple tip calculator that will let us demonstrate Test Driven Development
 - Run test again
 - Refactor the code
 - Repeat all the steps again
+
+This is a test
