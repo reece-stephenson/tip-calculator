@@ -10,7 +10,7 @@ function validateTipInput(tipPercentage) {
 function validatePeopleInput(numberOfPeople) {
     return typeof numberOfPeople === 'number' && numberOfPeople > 0 && Number.isInteger(numberOfPeople);
 }
-
+var module = module || {};
 module.exports = {
     validateBillInput,
     validateTipInput,

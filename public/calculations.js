@@ -24,6 +24,7 @@ function calculateTip(totalBill, tipPercentage) {
   return tipAmount.toFixed(2);
 }
 
+var module = module || {};
 module.exports = {
   calculateTotal,
   calculateTip,

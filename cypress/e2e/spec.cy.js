@@ -1,20 +1,58 @@
 /**E2E Tests */
 
 describe('login test', ()=>{
-  beforeEach('visits page', () => {
-    cy.visit('http://127.0.0.1:5500/index.html')
-  })
+  beforeEach('user can visit page', () => {
+    cy.visit('http://127.0.0.1:5500/public/index.html')
+  });
 
-  it('allows user to fill in username', () => {
+  it('allows user to fill in bill amount and tip percentage fields', () => {
 
-    cy.get('form').within(() => {
+    cy.get('#amount').type('100').should('have.value','100');
+    cy.get('#percentage').type('10').should('have.value','10');
 
-      // Only yield inputs within form
-      cy.get('input[name="username"]').type('Pamela').should('have.value', 'Pamela');
-      cy.get('input[name="password"]').type('Secret').should('have.value', 'Secret');;
-      cy.get('button').click();
-    })
+  });
 
-  })
+  it('allows user to fill in the Number of People Field', () => {
+
+    cy.get('#people').clear();
+    cy.get('#people').type('2').should('have.value','2');
+
+  });
+
+  it('returns the expected values based on bill and tip percentage input', () => {
+
+    cy.get('#amount').type('100').should('have.value','100');
+    cy.get('#percentage').type('10').should('have.value','10');
+
+    cy.get('#tip').should('contain.text', 'R10.00');
+    cy.get('#total').should('contain.text', 'R110');
+
+  });
+
+  it('returns correct split value when entering Number of People', () => {
+
+    cy.get('#amount').type('100').should('have.value','100');
+    cy.get('#percentage').type('10').should('have.value','10');
+
+    cy.get('#people').clear().type('2').should('have.value', '2');
+    cy.get('#split').should('contains.text', 'R55.00');
+
+  });
+
+  it('Displays an error when incorrect input is applied to Bill Amount', () => {
+
+    cy.get('#amount').type('-1');
+    cy.get('#percentage').type('1');
+    cy.get('#errorMessage').should('contain.text', 'Please insert a valid bill amount.');
+
+  });
+
+  it('Displays an error when incorrect input is applied to Tip Amount', () => {
+
+    cy.get('#amount').type('1');
+    cy.get('#percentage').type('-1');
+    cy.get('#errorMessage').should('contain.text', 'Please insert a valid tip percentage.');
+
+  });
 
 })
