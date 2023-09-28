@@ -12,12 +12,15 @@ describe('Total Amount Calculation Test', function(){
         assert.equal(app.calculateTotal(10, 1), 11);
         assert.equal(app.calculateTotal(10, 10), 20);
         assert.equal(app.calculateTotal(0, 1), 1);
+        assert.equal(app.calculateTotal(100.50, 10.30), 110.80);
     });
 
     it('should return an error when given invalid input', function(){
         expect(() => calculateTotal(0, -1)).to.throw(Error);
         expect(() => calculateTotal(-11, -121)).to.throw(Error);
         expect(() => calculateTotal(0, 0)).to.throw(Error);
+        expect(() => calculateTotal(-0.01, 1.0)).to.throw(Error);
+        expect(() => calculateTotal(-0.01, -1.0)).to.throw(Error);
     });
 
 });
