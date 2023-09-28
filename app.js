@@ -14,7 +14,13 @@ function validatePeopleInput(numberOfPeople) {
 
 //Temporarilty Putting BE Functions Here
 function calculateTotal(billAmount, tipAmount){
-    return billAmount + tipAmount;
+
+    if(billAmount < 0 || tipAmount < 0){
+        throw new Error('Invalid Input - Bill must be 0 or greater and Tip must be greater than 0')
+    }
+    
+    const total = Number(billAmount) + Number(tipAmount);
+    return total;
 }
 
 //Calculate Tip and Validate input
@@ -28,12 +34,11 @@ function calculateTip(totalBill, tipPercentage) {
     return tipAmount.toFixed(2);
   }
   
-  module.exports = calculateTip;
-  
 
 module.exports = {
     validateBillInput,
     validateTipInput,
     validatePeopleInput,
-    calculateTotal
+    calculateTotal,
+    calculateTip
 };
