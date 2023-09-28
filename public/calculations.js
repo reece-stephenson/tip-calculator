@@ -24,8 +24,25 @@ function calculateTip(totalBill, tipPercentage) {
   return tipAmount.toFixed(2);
 }
 
+//Calculate split amount and validate input
+function calculateSplitAmount(totalBill, numberOfPeople) {
+  if (
+    totalBill <= 0 ||
+    numberOfPeople <= 0 ||
+    !Number.isInteger(numberOfPeople)
+  ) {
+    throw new Error(
+      "Invalid input. Bill must be greater than 0, and number of people must be greater than zero and should be a whole number."
+    );
+  }
+
+  const splitAmount = totalBill / numberOfPeople;
+  return splitAmount.toFixed(2);
+}
+
 var module = module || {};
 module.exports = {
   calculateTotal,
   calculateTip,
+  calculateSplitAmount,
 };

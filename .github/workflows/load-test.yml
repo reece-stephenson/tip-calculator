@@ -1,0 +1,24 @@
+name: Load Test
+
+on:
+    push:
+      branches:
+        - main
+
+jobs:
+    load-test:
+      runs-on: ubuntu-latest
+      name: wait for deployment then load test
+      steps:
+        - uses: actions/checkout@v4
+        - name: Sleep for 3 minutes
+          run: sleep 600s
+          shell: bash
+        - name: Use Node.js 16
+          uses: actions/setup-node@v3
+          with:
+            node-version: '16'
+        - name: Install Artillery
+          run: npm install -g artillery@latest
+        - name: Load Test
+          run: artillery run load-testing/tip-load-test.yml
