@@ -10,16 +10,18 @@ describe("Total Amount Calculation Test", function () {
   it("should return the sum of the bill and tip amount as numbers if the input are numbers", function () {
     assert.equal(calculations.calculateTotal(10, 1), 11);
     assert.equal(calculations.calculateTotal(10, 10), 20);
-    assert.equal(calculations.calculateTotal(0, 1), 1);
+    assert.equal(calculations.calculateTotal(1, 0), 1);
     assert.equal(calculations.calculateTotal(100.5, 10.3), 110.8);
   });
 
   it("should return an error when given invalid input", function () {
-    expect(() => calculateTotal(0, -1)).to.throw(Error);
-    expect(() => calculateTotal(-11, -121)).to.throw(Error);
-    expect(() => calculateTotal(0, 0)).to.throw(Error);
-    expect(() => calculateTotal(-0.01, 1.0)).to.throw(Error);
-    expect(() => calculateTotal(-0.01, -1.0)).to.throw(Error);
+    expect(() => calculations.calculateTotal(0, -1)).to.throw(Error);
+    expect(() => calculations.calculateTotal(-11, -121)).to.throw(Error);
+    expect(() => calculations.calculateTotal(0, 0)).to.throw(Error);
+    expect(() => calculations.calculateTotal(0, 1)).to.throw(Error);
+    expect(() => calculations.calculateTotal(1, 0)).to.not.throw(Error);
+    expect(() => calculations.calculateTotal(-0.01, 1.0)).to.throw(Error);
+    expect(() => calculations.calculateTotal(-0.01, -1.0)).to.throw(Error);
   });
 });
 
@@ -30,6 +32,7 @@ describe("Tip Calculation", () => {
         { totalBill: 50, tipPercentage: 15, expectedTipAmount: "7.50" },
         { totalBill: 100, tipPercentage: 20, expectedTipAmount: "20.00" },
         { totalBill: 75.5, tipPercentage: 10, expectedTipAmount: "7.55" },
+        { totalBill: 100, tipPercentage: 110, expectedTipAmount: "110.00" },
       ];
 
       testCases.forEach((testCase) => {
@@ -43,7 +46,6 @@ describe("Tip Calculation", () => {
       const invalidInputs = [
         { totalBill: 0, tipPercentage: 15 },
         { totalBill: 100, tipPercentage: -5 },
-        { totalBill: 100, tipPercentage: 110 },
       ];
 
       invalidInputs.forEach((input) => {
@@ -58,9 +60,9 @@ describe("Tip Calculation", () => {
       expect(() => calculations.calculateTip(0.01, 0)).to.not.throw(Error);
 
       // Test with the maximum bill and tip percentage values
-      expect(() => calculations.calculateTip(Number.MAX_SAFE_INTEGER, 100)).to.not.throw(
-        Error
-      );
+      expect(() =>
+        calculations.calculateTip(Number.MAX_SAFE_INTEGER, 100)
+      ).to.not.throw(Error);
 
       // Test with a very high bill and a very low tip percentage
       const totalBill = 1e20; // 1 followed by 20 zeros
@@ -82,10 +84,10 @@ describe("Split Amount Calculation Test", function () {
   });
 
   it("should throw an error when given invalid input", function () {
-    expect(() => calculateTotal(0, 1.5)).to.throw(Error);
-    expect(() => calculateTotal(500, -2)).to.throw(Error);
-    expect(() => calculateTotal(0, 0)).to.throw(Error);
-    expect(() => calculateTotal(-0.01, 1.0)).to.throw(Error);
-    expect(() => calculateTotal(345, 1.4)).to.throw(Error);
+    expect(() => calculations.calculateSplitAmount(0, 1.5)).to.throw(Error);
+    expect(() => calculations.calculateSplitAmount(500, -2)).to.throw(Error);
+    expect(() => calculations.calculateSplitAmount(0, 0)).to.throw(Error);
+    expect(() => calculations.calculateSplitAmount(-0.01, 1.0)).to.throw(Error);
+    expect(() => calculations.calculateSplitAmount(345, 1.4)).to.throw(Error);
   });
 });

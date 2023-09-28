@@ -34,8 +34,8 @@ describe('Inputs', () => {
             assert.equal(inputValidation.validateTipInput(-1), false);
         });
     
-        it('should return false if the tip is a zero ', function () {
-            assert.equal(inputValidation.validateTipInput(0), false);
+        it('should return true if the tip is a zero ', function () {
+            assert.equal(inputValidation.validateTipInput(0), true);
         });
     
         it('should return false if the value is greater than 100 ', function () {

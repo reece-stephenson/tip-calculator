@@ -4,7 +4,7 @@ function validateBillInput(billAmount) {
 }
 
 function validateTipInput(tipPercentage) {
-    return typeof tipPercentage === 'number' && tipPercentage > 0 && tipPercentage <= 100
+    return typeof tipPercentage === 'number' && tipPercentage >= 0 && tipPercentage <= 100
 }
 
 function validatePeopleInput(numberOfPeople) {
