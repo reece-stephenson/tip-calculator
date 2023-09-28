@@ -12,8 +12,14 @@ function validatePeopleInput(numberOfPeople) {
     return null;
 }
 
+//Temporarilty Putting BE Functions Here
+function calculateTotal(billAmount, tipAmount){
+    return billAmount + tipAmount;
+}
+
 module.exports = {
     validateBillInput,
     validateTipInput,
-    validatePeopleInput
+    validatePeopleInput,
+    calculateTotal
 };
