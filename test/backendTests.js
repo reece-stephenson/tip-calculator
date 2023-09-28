@@ -1,6 +1,6 @@
 const assert = require("chai").assert;
 const expect = require("chai").expect;
-const app = require("../public/calculations");
+const calculations = require("../public/calculations");
 
 /**
  * Unit Tests for Backend Functions
@@ -8,10 +8,10 @@ const app = require("../public/calculations");
 
 describe("Total Amount Calculation Test", function () {
   it("should return the sum of the bill and tip amount as numbers if the input are numbers", function () {
-    assert.equal(app.calculateTotal(10, 1), 11);
-    assert.equal(app.calculateTotal(10, 10), 20);
-    assert.equal(app.calculateTotal(0, 1), 1);
-    assert.equal(app.calculateTotal(100.5, 10.3), 110.8);
+    assert.equal(calculations.calculateTotal(10, 1), 11);
+    assert.equal(calculations.calculateTotal(10, 10), 20);
+    assert.equal(calculations.calculateTotal(0, 1), 1);
+    assert.equal(calculations.calculateTotal(100.5, 10.3), 110.8);
   });
 
   it("should return an error when given invalid input", function () {
@@ -34,7 +34,7 @@ describe("Tip Calculation", () => {
 
       testCases.forEach((testCase) => {
         const { totalBill, tipPercentage, expectedTipAmount } = testCase;
-        const tipAmount = app.calculateTip(totalBill, tipPercentage);
+        const tipAmount = calculations.calculateTip(totalBill, tipPercentage);
         expect(tipAmount).to.equal(expectedTipAmount);
       });
     });
@@ -48,17 +48,17 @@ describe("Tip Calculation", () => {
 
       invalidInputs.forEach((input) => {
         expect(() =>
-          app.calculateTip(input.totalBill, input.tipPercentage)
+          calculations.calculateTip(input.totalBill, input.tipPercentage)
         ).to.throw(Error);
       });
     });
 
     it("should handle edge cases", () => {
       // Test with the minimum bill and tip percentage values
-      expect(() => app.calculateTip(0.01, 0)).to.not.throw(Error);
+      expect(() => calculations.calculateTip(0.01, 0)).to.not.throw(Error);
 
       // Test with the maximum bill and tip percentage values
-      expect(() => app.calculateTip(Number.MAX_SAFE_INTEGER, 100)).to.not.throw(
+      expect(() => calculations.calculateTip(Number.MAX_SAFE_INTEGER, 100)).to.not.throw(
         Error
       );
 
@@ -66,7 +66,7 @@ describe("Tip Calculation", () => {
       const totalBill = 1e20; // 1 followed by 20 zeros
       const tipPercentage = 0.00000001; // 0.00000001%
       const expectedTipAmount = "10000000000.00";
-      const tipAmount = app.calculateTip(totalBill, tipPercentage);
+      const tipAmount = calculations.calculateTip(totalBill, tipPercentage);
       expect(tipAmount).to.equal(expectedTipAmount);
     });
   });
@@ -74,11 +74,11 @@ describe("Tip Calculation", () => {
 
 describe("Split Amount Calculation Test", function () {
   it("should return the amount of the bill that each person will pay", function () {
-    assert.equal(app.calculateSplitAmount(36.9, 3), 12.3);
-    assert.equal(app.calculateSplitAmount(150, 5), 30.0);
-    assert.equal(app.calculateSplitAmount(24.3, 6), 4.05);
-    assert.equal(app.calculateSplitAmount(2500, 4), 625.0);
-    assert.equal(app.calculateSplitAmount(199.99, 3), 66.66);
+    assert.equal(calculations.calculateSplitAmount(36.9, 3), 12.3);
+    assert.equal(calculations.calculateSplitAmount(150, 5), 30.0);
+    assert.equal(calculations.calculateSplitAmount(24.3, 6), 4.05);
+    assert.equal(calculations.calculateSplitAmount(2500, 4), 625.0);
+    assert.equal(calculations.calculateSplitAmount(199.99, 3), 66.66);
   });
 
   it("should throw an error when given invalid input", function () {
