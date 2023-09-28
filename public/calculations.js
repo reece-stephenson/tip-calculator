@@ -34,6 +34,7 @@ function calculateSplitAmount(totalBill, numberOfPeople) {
   return splitAmount.toFixed(2);
 }
 
+var module = module || {};
 module.exports = {
   calculateTotal,
   calculateTip,
