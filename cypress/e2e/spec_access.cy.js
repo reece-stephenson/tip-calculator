@@ -6,7 +6,7 @@
 describe('Accessibility testing with AXE tool', () => {
     beforeEach(() => {
     //First the site that needs to be visited is called using the cy.visit() function.
-    cy.visit('http://127.0.0.1:5500/public/index.html')
+    cy.visit('https://tipcalc.bbdgrad.com/')
     
     
     //After visiting the page, the cy.injectAxe() method is called to load the

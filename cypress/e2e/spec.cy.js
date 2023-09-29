@@ -2,7 +2,7 @@
 
 describe('login test', ()=>{
   beforeEach('user can visit page', () => {
-    cy.visit('http://127.0.0.1:5500/public/index.html')
+    cy.visit('https://tipcalc.bbdgrad.com/')
   });
 
   it('allows user to fill in bill amount and tip percentage fields', () => {
